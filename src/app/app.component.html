@@ -1,43 +1,56 @@
 <h2>AOE4 Pick and Ban Renderer</h2>
-<div class="sizes">
-    <p-avatar></p-avatar>
-    <!--<input class="hidden" type="file" id="upload-file" name="upload-file" ngf-max-size="2MB" (change)="addAttachment($event)">-->
-    <p-avatar></p-avatar>
-    <p-avatar icon="pi pi-search"></p-avatar>
-    <p-avatar image="user1.png"></p-avatar>
-
-    <input type="text" class="p-inputtext-lg" placeholder="Player1" pInputText/> 1 2
-    <input type="text" class="p-inputtext-lg" placeholder="Player2" pInputText/>
-
+<div>
+    <!--<p-avatar></p-avatar>-->
+    <!--<input class="hidden" type="file" id="upload-file" name="upload-file" ngf-max-size="2MB" (change)="addAttachment($event)">
     <p-avatar></p-avatar>
     <p-avatar icon="pi pi-search"></p-avatar>
-    <p-avatar image="user2.png"></p-avatar>
+    <p-avatar image="user1.png"></p-avatar>-->
+
+    <input type="text" name="namePlayer1" pInputText [(ngModel)]="player1" placeholder="Player1">
+
+    <p-inputNumber ngDefaultControl [(ngModel)]="winsPlayer1" placeholder=0 styleClass="inputNumber"></p-inputNumber>
+    <p-inputNumber ngDefaultControl [(ngModel)]="winsPlayer2" placeholder=0 styleClass="inputNumber"></p-inputNumber>
+
+    <input type="text" name="namePlayer2" pInputText [(ngModel)]="player2" placeholder="Player2">
 
 </div>
-<div class="sizes">
 
-    <form action="/action_page.php">
-        <label for="Player2">Match1</label>
-        <input type="radio" id="player1" name="match1" value="Player1">
-        <label for="Player1"></label>
-        <input type="radio" id="player2" name="match1" value="Player2">
-        <label for="Player2"></label>
-    </form>
-    <br>
-    <form action="/action_page.php">
-        <label for="Player2">Match2</label>
-        <input type="radio" id="player1" name="match1" value="Player1">
-        <label for="Player1"></label>
-        <p-dropdown [options]="cities" [(ngModel)]="selectedCity" optionLabel="name"></p-dropdown>
-        <input type="radio" id="player2" name="match1" value="Player2">
-        <label for="Player2"></label>
+<!--<p-avatar></p-avatar>
+<p-avatar icon="pi pi-search"></p-avatar>
+<p-avatar image="user2.png"></p-avatar>-->
+<div styleClass="matchSelections">
+    <label for="Player2">Match1</label>
+    <p-radioButton name="match1" [(ngModel)]="selectedWinnerMatch1"></p-radioButton>
+    <label for="Player1"></label>
 
-    </form>
+    <p-dropdown [options]="civs" [(ngModel)]="selectedCiv1Match1" placeholder="Select a Civ" optionLabel="name" [showClear]="true"></p-dropdown>
+
+    <p-dropdown [options]="maps" [(ngModel)]="selectedMap1" placeholder="Select a Map" optionLabel="name" [showClear]="true"></p-dropdown>
+
+    <p-dropdown [options]="civs" [(ngModel)]="selectedCiv2Match1" placeholder="Select a Civ" optionLabel="name" [showClear]="true"></p-dropdown>
+
+    <p-radioButton name="match1" [(ngModel)]="selectedWinnerMatch1"></p-radioButton>
+    <label for="Player2"></label>
     <br>
-    <form action="/action_page.php">
-        <label for="Player2">Match3</label>
-        <input type="radio" id="player1" name="match1" value="Player1">
-        <label for="Player1"></label>
-        <input type="radio" id="player2" name="match1" value="Player2">
-        <label for="Player2"></label>
-    </form>
+    <label for="Player2">Match2</label>
+    <p-radioButton name="match2" [(ngModel)]="selectedWinnerMatch2"></p-radioButton>
+    <label for="Player1"></label>
+    <p-dropdown [options]="civs" [(ngModel)]="selectedCiv1Match2" placeholder="Select a Civ" optionLabel="name" [showClear]="true"></p-dropdown>
+
+    <p-dropdown [options]="maps" [(ngModel)]="selectedMap2" placeholder="Select a Map" optionLabel="name" [showClear]="true"></p-dropdown>
+
+    <p-dropdown [options]="civs" [(ngModel)]="selectedCiv2Match2" placeholder="Select a Civ" optionLabel="name" [showClear]="true"></p-dropdown>
+    <p-radioButton name="match2" [(ngModel)]="selectedWinnerMatch2"></p-radioButton>
+    <label for="Player2"></label>
+    <br>
+    <label for="Player2">Match3</label>
+    <p-radioButton name="match3" [(ngModel)]="selectedWinnerMatch3"></p-radioButton>
+    <label for="Player1"></label>
+    <p-dropdown [options]="civs" [(ngModel)]="selectedCiv1Match3" placeholder="Select a Civ" optionLabel="name" [showClear]="true"></p-dropdown>
+    <p-dropdown [options]="maps" [(ngModel)]="selectedMap3" placeholder="Select a Map" optionLabel="name" [showClear]="true"></p-dropdown>
+    <p-dropdown [options]="civs" [(ngModel)]="selectedCiv2Match3" placeholder="Select a Civ" optionLabel="name" [showClear]="true"></p-dropdown>
+    <p-radioButton name="match3" [(ngModel)]="selectedWinnerMatch3"></p-radioButton>
+    <label for="Player2"></label>
+    <br>
+    <button pButton type="button" label="Render"></button>
+</div>

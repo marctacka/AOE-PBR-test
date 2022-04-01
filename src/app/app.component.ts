@@ -1,8 +1,15 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { FormGroup, FormControl} from '@angular/forms';
 
-interface City {
+
+
+interface Civ {
   name: string;
   code: string;
+}
+interface Map {
+  name: string;
+  icon: string;
 }
 
 @Component({
@@ -10,20 +17,58 @@ interface City {
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
+export class AppComponent implements OnInit {
 
-export class AppComponent {
-  cities: City[];
+  player1: string;
+  player2: string;
 
-  selectedCity: City;
+  winsPlayer1: number;
+  winsPlayer2: number;
 
-  constructor() {
-      this.cities = [
-          {name: 'New York', code: 'NY'},
-          {name: 'Rome', code: 'RM'},
-          {name: 'London', code: 'LDN'},
-          {name: 'Istanbul', code: 'IST'},
-          {name: 'Paris', code: 'PRS'}
+  civs: Civ[];
+  maps: Map[];
+
+  counterForm: FormGroup;
+
+  selectedCiv1Match1: Civ;
+  selectedCiv2Match1: Civ;
+  selectedCiv1Match2: Civ;
+  selectedCiv2Match2: Civ;
+  selectedCiv1Match3: Civ;
+  selectedCiv2Match3: Civ;
+
+  selectedMap1: Map;
+  selectedMap2: Map;
+  selectedMap3: Map;
+
+  selectedWinnerMatch1: number;
+  selectedWinnerMatch2: number;
+  selectedWinnerMatch3: number;
+
+  constructor(
+
+  ) {
+      this.civs = [
+          {name: 'The English', code: 'EN'},
+          {name: 'The French', code: 'FR'},
+          {name: 'The Holy Roman Empire', code: 'RE'},
+          {name: 'The Chinese', code: 'CI'},
+          {name: 'The Rus', code: 'RU'},
+          {name: 'The Abbasid Dynasty', code: 'AD'},
+          {name: 'The Delhi Sultunate', code: 'DS'},
+          {name: 'The Mongols', code: 'MO'}
       ];
+      this.maps =[
+        {name: 'map1', icon: '1'},
+        {name: 'map2', icon: '2'},
+        {name: 'map3', icon: '3'}
+      ];
+  }
+  ngOnInit(): void {
+    this.counterForm = new FormGroup({
+      winsPlayer1: new FormControl(),
+      winsPlayer2: new FormControl()
+  });
   }
 
 }
